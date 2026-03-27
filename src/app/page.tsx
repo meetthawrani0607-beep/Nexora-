@@ -1,5 +1,10 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense, lazy } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import dynamic from 'next/dynamic';
+import ScrollReveal, { StaggerContainer, StaggerChild } from './components/ScrollReveal';
+
+const Hero3D = dynamic(() => import('./components/Hero3D'), { ssr: false });
 
 const WHATSAPP_NUMBER = '916387227658';
 const TARGET_EMAIL = 'punittripathi025@gmail.com'; // Form submissions will be sent silently to this inbox
@@ -611,36 +616,62 @@ export default function LandingPage() {
       <WhatsAppFloat />
 
       {/* ===== HERO ===== */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 px-6" id="hero">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#2563EB] rounded-full opacity-[0.06] blur-[120px]"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#7C3AED] rounded-full opacity-[0.06] blur-[120px]"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#06B6D4] rounded-full opacity-[0.04] blur-[100px]"></div>
+      <section className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden" id="hero">
+        {/* 3D Background */}
+        <Hero3D />
+
+        {/* Gradient Orbs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#2563EB] rounded-full opacity-[0.07] blur-[150px] animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#7C3AED] rounded-full opacity-[0.07] blur-[150px] animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#06B6D4] rounded-full opacity-[0.05] blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
 
-        <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#131825] border border-[#1E293B] text-sm text-[#94A3B8] mb-8">
+        {/* Hero Content */}
+        <div className="relative z-10 text-center max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#131825]/60 backdrop-blur-xl border border-[#1E293B] text-sm text-[#94A3B8] mb-8"
+          >
             <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
             Now accepting new projects for 2026
-          </div>
+          </motion.div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight tracking-tight">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-[0.95] tracking-tight"
+          >
             Build Beyond<br /><span className="text-gradient">Tomorrow</span>
-          </h1>
+          </motion.h1>
 
-          <p className="text-lg md:text-xl text-[#94A3B8] max-w-2xl mx-auto mb-10 leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-lg md:text-xl text-[#94A3B8] max-w-2xl mx-auto mb-10 leading-relaxed"
+          >
             We craft powerful digital experiences that elevate brands into the future — blending design, technology, and strategy into one seamless force.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
             <a href="#contact" className="btn-primary text-lg px-10 py-4">
-              Contact Us <i className="fas fa-arrow-right"></i>
+              <span>Contact Us</span> <i className="fas fa-arrow-right"></i>
             </a>
             <a href="#portfolio" className="btn-secondary text-lg px-10 py-4">
               <i className="fas fa-play text-sm"></i> View Work
             </a>
-          </div>
-        </div>      </section>
+          </motion.div>
+        </div>
+      </section>
 
       {/* ===== STATS ===== */}
       <section className="relative z-10 py-16 border-y border-[#1E293B]">
@@ -655,23 +686,25 @@ export default function LandingPage() {
       {/* ===== SERVICES ===== */}
       <section className="relative z-10 py-24 px-6" id="services">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <span className="text-[#2563EB] text-sm font-semibold tracking-widest uppercase">What We Do</span>
             <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">Our <span className="text-gradient">Services</span></h2>
             <p className="text-[#94A3B8] max-w-xl mx-auto">End-to-end digital solutions engineered for scale, performance, and unforgettable experiences.</p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
-              <div key={i} className="glass-card p-8 group hover:-translate-y-2 transition-all duration-300 cursor-pointer">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2563EB20] to-[#7C3AED20] flex items-center justify-center mb-6 group-hover:from-[#2563EB40] group-hover:to-[#7C3AED40] transition-all">
-                  <i className={`fas ${s.icon} text-2xl text-gradient`}></i>
+              <StaggerChild key={i}>
+                <div className="glass-card p-8 group hover:-translate-y-2 transition-all duration-300 cursor-pointer h-full">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2563EB20] to-[#7C3AED20] flex items-center justify-center mb-6 group-hover:from-[#2563EB40] group-hover:to-[#7C3AED40] group-hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] transition-all">
+                    <i className={`fas ${s.icon} text-2xl text-gradient`}></i>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">{s.title}</h3>
+                  <p className="text-[#94A3B8] leading-relaxed">{s.desc}</p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{s.title}</h3>
-                <p className="text-[#94A3B8] leading-relaxed">{s.desc}</p>
-              </div>
+              </StaggerChild>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -681,13 +714,13 @@ export default function LandingPage() {
           <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-[#7C3AED] rounded-full opacity-[0.04] blur-[120px]"></div>
         </div>
         <div className="max-w-7xl mx-auto relative">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <span className="text-[#7C3AED] text-sm font-semibold tracking-widest uppercase">Why Choose Us</span>
             <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">Why <span className="text-gradient">Nexora</span>?</h2>
             <p className="text-[#94A3B8] max-w-xl mx-auto">We don't just build products — we engineer competitive advantages.</p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {whyUs.map((w, i) => (
               <div key={i} className="glass-card p-8 flex gap-6 group hover:-translate-y-1 transition-all duration-300">
                 <div className="w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br from-[#7C3AED20] to-[#06B6D420] flex items-center justify-center group-hover:from-[#7C3AED40] group-hover:to-[#06B6D440] transition-all">
@@ -699,20 +732,20 @@ export default function LandingPage() {
                 </div>
               </div>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* ===== PORTFOLIO ===== */}
       <section className="relative z-10 py-24 px-6" id="portfolio">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <span className="text-[#2563EB] text-sm font-semibold tracking-widest uppercase">Our Work</span>
             <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">Featured <span className="text-gradient">Projects</span></h2>
             <p className="text-[#94A3B8] max-w-xl mx-auto">Click on any project to explore the full case study, approach, and pricing.</p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((p, i) => (
               <div key={i} className="group relative rounded-2xl overflow-hidden aspect-video cursor-pointer" onClick={() => setSelectedProject(p)}>
                 <div className={`absolute inset-0 bg-gradient-to-br ${p.gradient} opacity-20 group-hover:opacity-35 transition-all duration-500`}></div>
@@ -727,7 +760,7 @@ export default function LandingPage() {
                 </div>
               </div>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -737,12 +770,12 @@ export default function LandingPage() {
       {/* ===== TESTIMONIALS ===== */}
       <section className="relative z-10 py-24 px-6" id="testimonials">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <ScrollReveal className="text-center mb-16">
             <span className="text-[#7C3AED] text-sm font-semibold tracking-widest uppercase">Client Love</span>
             <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">What Our <span className="text-gradient">Clients Say</span></h2>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <div key={i} className="glass-card p-8">
                 <div className="flex text-[#FBBF24] gap-1 mb-4">
@@ -758,7 +791,7 @@ export default function LandingPage() {
                 </div>
               </div>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -769,11 +802,11 @@ export default function LandingPage() {
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#7C3AED] rounded-full opacity-[0.04] blur-[120px]"></div>
         </div>
         <div className="max-w-5xl mx-auto relative">
-          <div className="text-center mb-12">
+          <ScrollReveal className="text-center mb-12">
             <span className="text-[#25D366] text-sm font-semibold tracking-widest uppercase">Get In Touch</span>
             <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">Contact <span className="text-gradient">Us</span></h2>
             <p className="text-[#94A3B8] max-w-xl mx-auto">Fill out the form and we'll connect with you on WhatsApp instantly.</p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
             {/* Contact Info Cards */}
