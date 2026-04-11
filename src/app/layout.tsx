@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nexora — Build Beyond Tomorrow | Premium Digital Agency",
-  description: "Nexora is a cutting-edge digital agency focused on building powerful, scalable, and modern digital experiences that elevate brands into the future.",
+  title: "DevAligns — Build Beyond Tomorrow | Premium Digital Agency",
+  description: "DevAligns is a cutting-edge digital agency focused on building powerful, scalable, and modern digital experiences that elevate brands into the future.",
   keywords: "digital agency, web development, UI/UX design, branding, AI solutions, digital marketing",
   icons: {
-    icon: "/nexora-logo.png",
-    apple: "/nexora-logo.png",
+    icon: "/devaligns-logo.png",
+    apple: "/devaligns-logo.png",
   },
 };
 

@@ -6,8 +6,8 @@ import ScrollReveal, { StaggerContainer, StaggerChild } from './components/Scrol
 
 const Hero3D = dynamic(() => import('./components/Hero3D'), { ssr: false });
 
-const WHATSAPP_NUMBER = '916387227658';
-const TARGET_EMAIL = 'punittripathi025@gmail.com'; // Form submissions will be sent silently to this inbox
+const WHATSAPP_NUMBER = '919213598754';
+const TARGET_EMAIL = 'devaligns.info@gmail.com'; // Form submissions will be sent silently to this inbox
 
 // ─── Particle Background ───────────────────────
 function ParticleCanvas() {
@@ -119,8 +119,8 @@ function Navbar() {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#0B0F19]/90 backdrop-blur-xl border-b border-[#1E293B]' : ''}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2">
-          <img src="/nexora-logo.png" alt="Nexora" className="h-10 w-auto object-contain" />
-          <span className="text-white font-black text-3xl tracking-tight">Nexora</span>
+          <img src="/devaligns-logo.png" alt="DevAligns" className="h-10 w-auto object-contain" />
+          <span className="text-white font-black text-3xl tracking-tight">DevAligns</span>
         </a>
 
         <div className={`nav-links ${mobileOpen ? 'active' : ''} hidden md:flex items-center gap-8`}>
@@ -207,7 +207,7 @@ function WhatsAppFloat() {
 
   return (
     <a
-      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi Nexora! I\'m interested in your services. Let\'s discuss a project.')}`}
+      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi DevAligns! I\'m interested in your services. Let\'s discuss a project.')}`}
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp-float"
@@ -507,7 +507,7 @@ function ProjectModal({ project, onClose }: { project: typeof projects[0]; onClo
                     ))}
                   </div>
                   <a
-                    href={`https://wa.me/916387227658?text=${encodeURIComponent(`Hi Nexora! I'm interested in a project similar to "${project.title}". Let's discuss!`)}`}
+                    href={`https://wa.me/919213598754?text=${encodeURIComponent(`Hi DevAligns! I'm interested in a project similar to "${project.title}". Let's discuss!`)}`}
                     target="_blank" rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 px-8 py-3.5 rounded-xl font-semibold text-white bg-[#25D366] hover:bg-[#20BD5A] hover:shadow-[0_8px_30px_rgba(37,211,102,0.4)] transition-all"
                   >
@@ -552,7 +552,7 @@ export default function LandingPage() {
     setFormStatus('loading');
 
     // Build WhatsApp message
-    const whatsappMessage = `🚀 *New Project Inquiry — Nexora*\n\n👤 *Name:* ${formData.name}\n📧 *Email:* ${formData.email}\n📱 *Phone:* ${formData.phone || 'Not provided'}\n📂 *Project Type:* ${formData.projectType}\n\n💬 *Message:*\n${formData.message}`;
+    const whatsappMessage = `🚀 *New Project Inquiry — DevAligns*\n\n👤 *Name:* ${formData.name}\n📧 *Email:* ${formData.email}\n📱 *Phone:* ${formData.phone || 'Not provided'}\n📂 *Project Type:* ${formData.projectType}\n\n💬 *Message:*\n${formData.message}`;
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -599,11 +599,11 @@ export default function LandingPage() {
   ];
 
   const testimonials = [
-    { name: 'Arjun Kapoor', role: 'CEO, TechVista Inc.', text: '"Nexora completely transformed our digital presence. The new platform increased our conversions by 340% in just three months."', initials: 'AK' },
-    { name: 'Sarah Mitchell', role: 'Founder, Bloom Health', text: '"Working with Nexora felt like having an in-house team of superstars. They nailed our brand identity."', initials: 'SM' },
-    { name: 'Raj Patel', role: 'CTO, DataForge Labs', text: '"From strategy to execution, Nexora delivered beyond expectations. Our AI-powered dashboard is now our competitive edge."', initials: 'RP' },
+    { name: 'Arjun Kapoor', role: 'CEO, TechVista Inc.', text: '"DevAligns completely transformed our digital presence. The new platform increased our conversions by 340% in just three months."', initials: 'AK' },
+    { name: 'Sarah Mitchell', role: 'Founder, Bloom Health', text: '"Working with DevAligns felt like having an in-house team of superstars. They nailed our brand identity."', initials: 'SM' },
+    { name: 'Raj Patel', role: 'CTO, DataForge Labs', text: '"From strategy to execution, DevAligns delivered beyond expectations. Our AI-powered dashboard is now our competitive edge."', initials: 'RP' },
     { name: 'Lisa Chen', role: 'VP Design, Orbit Studio', text: '"The attention to detail is unmatched. Beautiful, functional, and scalable design system."', initials: 'LC' },
-    { name: 'Marcus King', role: 'Co-Founder, Apex Ventures', text: '"Nexora didn\'t just build us a website — they built us a growth engine. Revenue is up 200%."', initials: 'MK' },
+    { name: 'Marcus King', role: 'Co-Founder, Apex Ventures', text: '"DevAligns didn\'t just build us a website — they built us a growth engine. Revenue is up 200%."', initials: 'MK' },
     { name: 'Elena Novak', role: 'Director, Pulse Media', text: '"Professional, innovative, and relentless. Launched in record time with a premium product."', initials: 'EN' },
   ];
 
@@ -716,7 +716,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto relative">
           <ScrollReveal className="text-center mb-16">
             <span className="text-[#7C3AED] text-sm font-semibold tracking-widest uppercase">Why Choose Us</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">Why <span className="text-gradient">Nexora</span>?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">Why <span className="text-gradient">DevAligns</span>?</h2>
             <p className="text-[#94A3B8] max-w-xl mx-auto">We don't just build products — we engineer competitive advantages.</p>
           </ScrollReveal>
 
@@ -817,7 +817,7 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">WhatsApp</h4>
-                  <p className="text-[#94A3B8] text-sm">+91 63872 27658</p>
+                  <p className="text-[#94A3B8] text-sm">+91 92135 98754</p>
                   <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="text-[#25D366] text-sm font-medium hover:underline mt-1 inline-block">
                     Chat Now →
                   </a>
@@ -830,7 +830,7 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <h4 className="text-white font-semibold mb-1">Email</h4>
-                  <p className="text-[#94A3B8] text-sm">hello@nexora.agency</p>
+                  <p className="text-[#94A3B8] text-sm">devaligns.info@gmail.com</p>
                 </div>
               </div>
 
@@ -937,12 +937,12 @@ export default function LandingPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Transform Your Business?</h2>
               <p className="text-[#94A3B8] mb-8 max-w-lg mx-auto">Let's discuss your project over a quick WhatsApp chat. We respond within the hour.</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi Nexora! I\'d like to discuss a project.')}`}
+                <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi DevAligns! I\'d like to discuss a project.')}`}
                   target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 px-10 py-4 rounded-xl font-semibold text-lg bg-[#25D366] text-white hover:bg-[#20BD5A] hover:shadow-[0_8px_30px_rgba(37,211,102,0.4)] transition-all">
                   <i className="fab fa-whatsapp text-xl"></i>Chat on WhatsApp
                 </a>
-                <a href="mailto:hello@nexora.agency" className="btn-secondary text-lg px-10 py-4">
+                <a href="mailto:devaligns.info@gmail.com" className="btn-secondary text-lg px-10 py-4">
                   <i className="fas fa-envelope mr-2"></i>Email Us
                 </a>
               </div>
@@ -957,8 +957,8 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <img src="/nexora-logo.png" alt="Nexora" className="h-10 w-auto object-contain" />
-                <span className="text-white font-black text-3xl tracking-tight">Nexora</span>
+                <img src="/devaligns-logo.png" alt="DevAligns" className="h-10 w-auto object-contain" />
+                <span className="text-white font-black text-3xl tracking-tight">DevAligns</span>
               </div>
               <p className="text-[#64748B] text-sm leading-relaxed mb-6">Crafting the digital future, one experience at a time.</p>
               <div className="flex gap-4">
@@ -993,7 +993,7 @@ export default function LandingPage() {
           </div>
 
           <div className="border-t border-[#1E293B] pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-[#64748B] text-sm">© 2026 Nexora. All rights reserved.</p>
+            <p className="text-[#64748B] text-sm">© 2026 DevAligns. All rights reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="text-[#64748B] text-sm hover:text-white transition-colors">Privacy Policy</a>
               <a href="#" className="text-[#64748B] text-sm hover:text-white transition-colors">Terms of Service</a>
