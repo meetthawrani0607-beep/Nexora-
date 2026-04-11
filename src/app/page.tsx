@@ -1,7 +1,7 @@
 'use client';
-import { useState, useEffect, useRef, Suspense, lazy } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import dynamic from 'next/dynamic';
+import { motion, AnimatePresence } from 'framer-motion';
 import ScrollReveal, { StaggerContainer, StaggerChild } from './components/ScrollReveal';
 
 const Hero3D = dynamic(() => import('./components/Hero3D'), { ssr: false });
@@ -153,9 +153,15 @@ function Navbar() {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-[#0B0F19]/95 backdrop-blur-xl border-t border-[#1E293B] p-6 flex flex-col gap-4">
-          {['Services', 'Why Us', 'Portfolio', 'Testimonials', 'Contact'].map(item => (
-            <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} onClick={() => setMobileOpen(false)}
-              className="text-[#94A3B8] hover:text-white transition-colors py-2">{item}</a>
+          {[
+            { label: 'Services', href: '#services' },
+            { label: 'Why Us', href: '#why' },
+            { label: 'Portfolio', href: '#portfolio' },
+            { label: 'Testimonials', href: '#testimonials' },
+            { label: 'Contact', href: '#contact' },
+          ].map(item => (
+            <a key={item.label} href={item.href} onClick={() => setMobileOpen(false)}
+              className="text-[#94A3B8] hover:text-white transition-colors py-2">{item.label}</a>
           ))}
           <a href="#contact" onClick={() => setMobileOpen(false)} className="btn-primary text-center">Contact Us</a>
         </div>
@@ -618,7 +624,9 @@ export default function LandingPage() {
       {/* ===== HERO ===== */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden" id="hero">
         {/* 3D Background */}
-        <Hero3D />
+        <Suspense fallback={null}>
+          <Hero3D />
+        </Suspense>
 
         {/* Gradient Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -891,14 +899,14 @@ export default function LandingPage() {
                         <select required className="input-field"
                           value={formData.projectType} onChange={e => setFormData({...formData, projectType: e.target.value})}>
                           <option value="">Select type</option>
-                          <option>Web Development</option>
-                          <option>UI/UX Design</option>
-                          <option>Branding</option>
-                          <option>Digital Marketing</option>
-                          <option>AI Solutions</option>
-                          <option>Mobile App</option>
-                          <option>E-Commerce</option>
-                          <option>Other</option>
+                          <option value="Web Development">Web Development</option>
+                          <option value="UI/UX Design">UI/UX Design</option>
+                          <option value="Branding">Branding</option>
+                          <option value="Digital Marketing">Digital Marketing</option>
+                          <option value="AI Solutions">AI Solutions</option>
+                          <option value="Mobile App">Mobile App</option>
+                          <option value="E-Commerce">E-Commerce</option>
+                          <option value="Other">Other</option>
                         </select>
                       </div>
                     </div>
